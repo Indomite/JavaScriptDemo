@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            /* background: red; */
+            /* 如果我这边直接先定义他的背景颜色的话，由于这是id属性，优先级高，所以调用下面的class是没有效果的 */
+        }
+        .box {
+            background: yellow;
+        }
+    </style>
+    <script>
+        // function toGreen() {
+        //     var odiv = document.getElementById('div1');
+        //     odiv.style.background = "green";
+        // }
+        // function toBlack() {
+        //     var odiv = document.getElementById('div1');
+        //     odiv.style.background = "black";
+        // }
+        // function toYellow() {
+        //     var odiv = document.getElementById('div1');
+        //     odiv.style.background = "yellow";
+        // }
+
+        // function changeColor(color) {
+        //     var odiv = document.getElementById('div1');
+        //     odiv.style.background = color;
+        // }
+
+        // function change(parameter) {
+        //     var odiv = document.getElementById('div1');
+        //     if(parameter == 'width'){
+        //         odiv.style.width = '300px';
+        //     }else if(parameter == 'height'){
+        //         odiv.style.height = '300px';
+        //     }else if(parameter == 'color'){
+        //         odiv.style.background = 'green';
+        //     }
+        // }
+
+        // function change(name,value) {
+        //     var odiv = document.getElementById('div1');
+        //     odiv.style[name] = value;
+        // }
+
+        //变量是可以不用引号的，就比如说，我们现在传递参数的时候，定义的name，value
+        //都是属于变量，在调用的时候就不需要是用引号，之后在赋值的时候需要加上引号
+        //也就是说变量、参数不需要引号，但是字符串需要引号
+
+        
+        // function toYellow(){
+        //     var odiv = document.getElementById('div1');
+        //     odiv.className = 'box';
+        // }
+
+
+        //style添加的样式都在行间，都是行间样式
+    </script>
+</head>
+<body>
+    <!-- <input type="button" value="变绿" onclick="changeColor('green')">
+    <input type="button" value="变黑" onclick="changeColor('black')">
+    <input type="button" value="变黄" onclick="changeColor('yellow')">
+    <div id="div1"></div> -->
+
+    <!-- <input type="button" value="变宽" onclick="change('width')">
+    <input type="button" value="变高" onclick="change('height')">
+    <input type="button" value="变绿" onclick="change('color')"> -->
+
+    <!-- <input type="button" value="变宽" onclick="change('width','400px')">
+    <input type="button" value="变高" onclick="change('height','400px')">
+    <input type="button" value="变绿" onclick="change('background','green')">
+    <div id="div1"></div> -->
+
+    <!-- <input type="button" value="变绿" onclick="toGreen()">
+    <input type="button" value="变黄" onclick="toYellow()"> -->
+
+    <input type="button" value="变绿" id="btn">
+    <div id="div1"></div>
+    <script>
+        var btn = document.getElementById('btn');
+        function toGreen(){
+            var odiv = document.getElementById('div1');
+            odiv.style.background = 'green';
+            // alert('aaa');
+        } 
+        btn.onclick = toGreen;
+
+        //此时必须写在input的下面才可以，由于网页从上往下解析的，所以一般都把script写在下面
+    </script>
+</body>
+</html>

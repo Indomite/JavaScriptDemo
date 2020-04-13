@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        #div1 {
+            width: 200px;
+            height: 100px;
+            background: #aaa;
+            border: 1px solid #999;
+            display: none;
+        }
+    </style> -->
+
+    <style>
+        #div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        .box {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- <input type="checkbox"" onmousemove="onmouse()" onmouseout="outmouse()">
+    <div id="div1">
+        为了你的信息安全。。。
+    </div> -->
+
+    <input type="button" value="变红" onclick="toRed()">
+    <div id="div"></div>
+</body>
+
+<script>
+    // function onmouse() {
+    //     var getId = document.getElementById('div1');
+    //     getId.style.display='block';
+    //     getId.style.width='300px';
+    //     getId.style.height ='300px';
+    //     getId.style.background='red';
+    // }
+
+    // function outmouse() {
+    //     var getId = document.getElementById('div1');
+    //     getId.style.display='none';
+    //     // getId.style.width='300px';
+    //     // getId.style.height ='300px';
+    //     // getId.style.background='';
+    // }
+
+    function toRed() {
+        var div = document.getElementById('div');
+        div.className = 'box';
+
+    }
+</script>
+
+</html>
