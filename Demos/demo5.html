@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #div1 {
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+</style>
+
+<script>
+    // arguments
+    // function show(){
+    //     // alert(arguments.length)
+    //     var result = 0;
+    //     for(var i=0;i<arguments.length;i++){
+    //         result=result+arguments[i];
+    //     }
+    //     return result;
+    // }
+    // alert(show(1,1,1))
+
+        //面试题
+    // var yideng = function yideng(){
+    //     yideng = 1;
+    //     console.log(typeof(yideng));
+    // }
+    // yideng();
+    // // console.log(typeof(yideng));
+
+    window.onload = function(){
+        var oDiv = document.getElementById('div1');
+        alert(oDiv.currentStyle.width);
+    }
+</script>
+
+<body>
+    <div id="div1"></div>
+</body>
+</html>
