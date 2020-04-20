@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+
+        //添加事件,参数用于添加在label标签
+        function add(labelText) {
+            //添加li标签
+            var para = document.createElement("li");
+            var element = document.getElementById("listul");
+            element.appendChild(para);
+
+            //往新的li标签添加label
+            var lb = document.createElement("label");
+            lb.appendChild(document.createTextNode(labelText));
+            element.lastChild.appendChild(lb);
+
+            //往新的li标签添加删除按钮
+            var butt = document.createElement("button");
+            butt.appendChild(document.createTextNode("删除"));
+            element.lastChild.appendChild(butt);
+            butt.onclick = function () {
+                butt.parentNode.parentNode.removeChild(butt.parentNode);
+            };
+        }
+        //初始化todolist
+        function initList() {
+            for (var i = 0; i < mylist.length; i++) {
+                add(mylist[i].thing);
+            }
+        }
+        //添加
+        function addListDo() {
+            var labelText = document.getElementById("thing").value;
+
+            if (labelText == "" || labelText == null) return;
+            else {
+                add(labelText);
+                document.getElementById("thing").value = "";
+            }
+
+        }
+
+        //回车
+        function getKey() {
+            if (event.keyCode === 13) {
+                addListDo();
+            }
+        }
+
+        var myVar;
+        function delay(){
+            var labelText = document.getElementById("thing").value;
+            if (labelText == "" || labelText == null) alert("请输入事项");
+            else {alert("请等3秒！")}
+            var  myVar=setTimeout(addListDo(),3000)
+        }
+    </script>
+</head>
+
+<body onload="initList();">
+    <div class="todo">
+        <input type="text" id="thing" class="thing-input" onkeypress="getKey();">
+        <input type="submit" onclick="addListDo();" for="thing" value="+新增" id="inputone"></input>
+        <input type="submit" onclick="delay()" value="+延迟新增" id="inputtwo"></input>
+        <section class="list">
+            <ul class="list-item" id="listul">
+            </ul>
+        </section>
+        
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt1">
+    <input type="button" value="创建li" id="btn1">
+    <ul id="ul1">
+
+    </ul>
+</body>
+
+<script>
+    // 将元素添加到末尾
+    // var oBtn = document.getElementById('btn1');
+    // var oUl = document.getElementById('ul1');
+    // var oTxt = document.getElementById('txt1');
+
+    // oBtn.onclick = function(){
+    //     var oLi = document.createElement('li');
+    //     oUl.appendChild(oLi)
+    //     oLi.innerHTML = oTxt.value;
+    // }
+
+    var oBtn = document.getElementById('btn1');
+    var oUl = document.getElementById('ul1');
+    var oTxt = document.getElementById('txt1');
+
+    oBtn.onclick = function(){
+        var oLi = document.createElement('li');
+        // var oA = document.createElement('a');
+        
+        var ali = oUl.getElementsByTagName('li');
+        // var aA = oA.getElementsByTagName('a');
+        // oA.appendChild(aA);
+        oUl.insertBefore(oLi,ali[0]);
+        oLi.innerHTML = oTxt.value;
+        // oA.innerHTML = '<a href="">删除</a>';
+    }
+</script>
+</html>

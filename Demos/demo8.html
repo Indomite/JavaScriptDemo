@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="btn1" type="button" value="排序">
+    <ul id="ul1">
+        <li>54</li>
+        <li>56</li>
+        <li>76</li>
+        <li>35</li>
+        <li>65</li>
+    </ul>
+</body>
+
+<script>
+
+    //li排序
+
+    var oUl = document.getElementById('ul1');
+    var oBtn = document.getElementById('btn1');
+
+    oBtn.onclick = function()
+    {
+        var aLi = oUl.getElementsByTagName('li');
+        var arr = [];
+
+        for(var i=0;i<aLi.length;i++){
+            arr[i] = aLi[i];
+        }
+
+        arr.sort(function (li1, li2){
+            //注意大小写
+            var n1 = parseInt(li1.innerHTML);
+            var n2 = parseInt(li2.innerHTML);
+            return n1-n2;
+        });
+
+        alert(arr[0].innerHTML);
+
+        for(var i=0;i<arr.length;i++){
+            oUl.appendChild(arr[i]);
+        }
+    }
+</script>
+
+</html>
