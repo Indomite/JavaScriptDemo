@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
@@ -14,22 +13,22 @@
 
     function createPerson(name,qq){     //构造函数
         // 1.原料
-        var obj = new Object();
+        // var obj = new Object();
 
         // 2.加工
-        obj.name = name;
-        obj.qq = qq;
-        obj.showName = function(){
+        this.name = name;
+        this.qq = qq;
+        this.showName = function (){
             alert('我的名字叫：'+this.name);
         }
-        obj.showQQ = function(){
+        this.showQQ = function (){
             alert('我的QQ：'+this.qq);
         }
 
         // 3.出厂
-        return obj;
+        // return obj;
     }
-    var obj=createPerson('luoming','1140182280');
+    var obj=new createPerson('luoming','1140182280');
     obj.showName();
     obj.showQQ();
 </script>

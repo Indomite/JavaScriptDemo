@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 原型 -->
+</body>
+<script>
+    // 两个数组在这种情况下就都有了sum方法
+    var arr1 = new Array(1,2,1,2,1,2);
+    var arr2 = new Array(2,3,5,3,6,5);
+    Array.prototype.sum = function(){
+        var result = 0;
+        for(var i=0;i<this.length;i++){
+            result=result+this[i];
+        }
+        return result;
+    }
+    console.log(arr1.sum());
+    console.log(arr2.sum());
+</script>
+</html>
