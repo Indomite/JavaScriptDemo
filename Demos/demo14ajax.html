@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 编写Ajax -->
+    <!-- 1.创建Ajax对象
+    2.创建连接通道，连接到服务器
+    3.告知服务器所需要的文件，发送请求
+    4.接收返回值 -->
+    <input id="btn1" type="button" value="读取">
+</body>
+
+<script>
+
+    var oBtn = document.getElementById('btn1');
+    oBtn.onclick = function() {
+        // 1.创建Ajax对象
+        var oAjax = new XMLHttpRequest();
+        console.log(oAjax);
+        // 2.连接服务器
+        // open(1.方法(get\post) 2.文件名 3.异步传输)
+        // 在ajax下所谓的异步就是事情同时做完
+        oAjax.open('get','aaa.txt?t='+new Date().getTime(),true);
+        // 3.发送请求
+        oAjax.send();
+        // 4.接受返回
+        oAjax.onreadystatechange=function(){
+            // 0 未初始化，刚刚调用open()方法  
+            // 1 载入，已经调用send()方法,正在发送请求
+            // 2 载入完成,send()方法完成已经收到全部的响应内容
+            // 3 解析，正在解析响应内容
+            // 4 完成，响应内容解析完成，可以在客户端调用了
+            if(oAjax.readyState == 4){  //读取完成了
+                if(oAjax.status == 200){
+                    alert('成功' + oAjax.responseText);
+                }else{
+                    console.log('失败');
+                }
+            }
+        };
+    } 
+</script>
+
+</html>
