@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // // alert(document.cookie);
+    // var oDate = new Date();
+    // oDate.setDate(oDate.getDate()+14);
+    
+    // document.cookie = 'user=123;expires='+oDate;       //添加
+    // document.cookie = 'pass=123';
+    // alert(document.cookie);
+    // // alert(oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate())
+
+    function setCookie(name,value,iDay){
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate()+iDay);
+        document.cookie = name+'='+value+';expires=date';
+    }
+    function getCookie(name){
+        var arr = document.cookie.split('; ');
+        for(var i=0;i<arr.length;i++){
+
+            var arr2 = arr[i].split('=');
+
+            if(arr2[0]==name){
+                return arr2[1];
+            }
+        }
+        return '';
+    }
+    setCookie('luoming','18779952859',14);
+    alert(getCookie('name'));
+</script>
+</html> 
