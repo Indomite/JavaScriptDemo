@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="txt1" cols="30" rows="10"></textarea><br>
+    <input id="btn1" type="button" value="过滤"><br>
+    <textarea name="" id="txt2" cols="30" rows="10"></textarea>
+</body>
+<script>
+    //正则表达式
+    // var str = '1234564df6efg423sdf1g56sfd';
+    // alert(str.match(/\d+/g));
+
+    // var re = new RegExp('a');
+    // var str = 'bsadhf';
+    // alert(str.search(re));
+
+// 找出第一个数字
+    // var str = 'asdf156fer1f56werg45df1';
+    // var re = /\d/;
+    // alert(str.search(re));
+
+    // var str = 'asdf564fer1f56werg45df1';
+    // var re = /\d{2,3}/g;
+    // alert(str.match(re));
+
+    // 敏感过滤
+    var oTxt1 =document.getElementById('txt1');
+    var oBtn1 =document.getElementById('btn1');
+    var oTxt2 =document.getElementById('txt2');
+
+    oBtn1.onclick = function(){
+        var re = /毒品|赌博/g;
+        oTxt2.value=oTxt1.value.replace(re,'***');
+    };
+
+     
+</script>
+</html>

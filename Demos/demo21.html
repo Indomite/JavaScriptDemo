@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //选择数字
+    var str = '12 4df12d4ger5g12fge4fg531g54sdg';
+    var arr=[];
+    var tmp='';
+    for(var i=0;i<str.length;i++){
+        if(str.charAt(i)>0 && str.charAt(i)<9){
+            tmp+=str.charAt(i);
+        }else{
+            if(tmp){
+                arr.push(tmp);
+                tmp='';
+            }
+        }
+    }
+    alert(arr)
+</script>
+</html>
