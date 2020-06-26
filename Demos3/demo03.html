@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offsetparent</title>
+    <style>
+        #one {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one">
+        <div id="two">
+            <div id="three">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var three = document.getElementById("three");
+        console.log(three.parentNode); //找的是结构上的父级
+        console.log(three.parentElement);
+        console.log(three.offsetParent); //距离自身最近的，带有定位的父级元素
+    </script>
+</body>
+
+</html>

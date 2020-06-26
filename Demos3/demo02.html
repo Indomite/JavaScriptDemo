@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offsetheight和offsetwidth的构成</title>
+    <style>
+        #demo {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #111;
+            margin: 10px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="" id="demo"></div>
+
+    <script>
+        var demo = document.getElementById("demo");
+        console.log(demo.offsetHeight);
+        //通过案例我们可以看见，offset属性是不包括margin的，但是是包括border的
+    </script>
+</body>
+
+</html>

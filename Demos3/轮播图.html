@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>简单的轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul>li>img {
+            width: 1000px;
+            height: 600px;
+        }
+
+        #slideshow {
+            width: 1000px;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+            margin: 50px auto;
+        }
+
+        #imglist>li {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        #dotlist {
+            position: absolute;
+            bottom: 30px;
+            width: 150px;
+            display: flex;
+            justify-content: space-between;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        #dotlist>li {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: .3;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #imglist>li.current,
+        #dotlist>li.current {
+            opacity: 1;
+        }
+
+        #pre,
+        #next {
+            position: absolute;
+            font-size: 80px;
+            color: rgba(0, 0, 0, .3);
+            top: 50%;
+            transform: translate(0, -50%);
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #pre {
+            left: 20px;
+        }
+
+        #next {
+            right: 20px;
+        }
+
+        #pre:hover,
+        #next:hover {
+            color: rgba(255, 255, 255, .3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slideshow">
+        <ul id="imglist">
+            <li><img src="./images/1.png"></li>
+            <li><img src="./images/2.png"></li>
+            <li><img src="./images/3.png"></li>
+            <li><img src="./images/4.png"></li>
+            <li><img src="./images/5.png"></li>
+        </ul>
+        <ul id="dotlist">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div id="pre">&lt;</div>
+        <div id="next">&gt;</div>
+    </div>
+    <script>
+        var slideShow = document.getElementById("slideshow");
+        var imgList = document.getElementById("imglist");
+        var imgs = imgList.children;
+        var dotList = document.getElementById("dotlist");
+        var dots = dotlist.children;
+        var pre = document.getElementById("pre");
+        var next = document.getElementById("next");
+        var duration = 3000; //每张图片的持续显示时间
+        var curIndex = 0; //设置当前显示图片的索引值
+        var count = imglist.children.length; //获得总的图片数量
+        var timer; //设置一个计时变量
+
+        window.onload = function () {
+            imgList.children[0].classList.add("current"); //初始时显示第一幅图片
+            dotList.children[0].classList.add("current"); //初始时第一个点为白色
+            //为每个点添加单击处理函数
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].index = i;
+                dots[i].addEventListener("mouseover", changeMe);
+            }
+            //启动动画自动播放
+            timer = setInterval(change, duration);
+            //鼠标移至幻灯片时，停止动画
+            slideShow.addEventListener("mouseover", function () {
+                clearInterval(timer);
+            })
+            //鼠标离开幻灯片时，启动动画
+            slideShow.addEventListener("mouseout", function () {
+                timer = setInterval(rotate, duration);
+            })
+            //为左右导航按钮添加单击处理函数
+            pre.addEventListener("click", preImg);
+            next.addEventListener("click", nextImg);
+        }
+
+        //改变图片和点的当前状态
+        function change() {
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("current");
+                imgs[i].classList.remove("current");
+            }
+            dots[curIndex].classList.add("current");
+            imgs[curIndex].classList.add("current");
+        }
+
+        //循环切换图片
+        function rotate() {
+            curIndex++;
+            if (curIndex == count) {
+                curIndex = 0;
+            }
+            change();
+        }
+
+        //切换上一幅图片
+        function preImg() {
+            curIndex--;
+            if (curIndex < 0) {
+                curIndex = count - 1;
+            }
+            change();
+        }
+
+        //切换下一幅图片
+        function nextImg() {
+            rotate();
+        }
+
+        //单击某个圆点，切换到相应图片
+        function changeMe() {
+            curIndex = this.index;
+            change();
+        }
+    </script>
+</body>
+
+</html>

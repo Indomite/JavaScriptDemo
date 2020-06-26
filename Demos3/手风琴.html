@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 1000px;
+            height: 400px;
+            margin: 50px auto;
+            /* border: 1px solid red; */
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul>li {
+            float: left;
+            width: 200px;
+            height: 400px;
+            /* background-image: url(./images/1.png); */
+        }
+
+        /* ul>li:hover {
+            background: #000;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        var box = document.getElementById("box");
+        var ul = box.children[0];
+        var li = ul.children;
+        for (var i = 0; i < li.length; i++) {
+            li[i].style.backgroundImage = "url(images/" + (i + 1) + ".png)";
+            li[i].onmouseover = function () {
+                for (var j = 0; j < li.length; j++) {
+                    animate(li[j], {
+                        "width": 100
+                    })
+                }
+                animate(this, {
+                    "width": 600
+                })
+            }
+            li[i].onmouseout = function () {
+                for (var i = 0; i < li.length; i++) {
+                    animate(li[i], {
+                        "width": 200
+                    })
+                }
+            }
+        }
+
+        function animate(obj, json) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var flag = true;
+                for (var k in json) {
+                    var leader = parseInt(getStyle(obj, k)) || 0;
+                    var target = json[k];
+                    var step = (target - leader) / 10;
+                    //这么判断的话，就是在边界出来的时候会有撑开的情况，所以页面会跳动
+                    // step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    obj.style[k] = leader + "px";
+                    if (leader !== target) {
+                        flag = false;
+                    }
+                }
+                if (flag) {
+                    clearInterval(obj.timer);
+                }
+            }, 15)
+        }
+
+        function getStyle(obj, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(obj, null)[attr];
+            } else {
+                return obj.currentStyle[attr];
+            }
+
+        }
+    </script>
+</body>
+
+</html>

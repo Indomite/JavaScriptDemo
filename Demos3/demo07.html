@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标经过的缓动效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul>li {
+            margin: 0 50px;
+            float: left;
+            font-size: 20px;
+        }
+
+        span {
+            position: absolute;
+            left: 50px;
+            width: 40px;
+            height: 40px;
+            background: rgba(12, 12, 12, .3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <span id="cloud"></span>
+        <ul id="navBar">
+            <li>北京</li>
+            <li>上海</li>
+            <li>广州</li>
+            <li>深圳</li>
+            <li>杭州</li>
+            <li>成都</li>
+        </ul>
+    </div>
+
+    <script>
+        var navBar = document.getElementById("navBar");
+        var cloud = document.getElementById("cloud");
+        var lis = navBar.children;
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                var target = this.offsetLeft;
+                animate(cloud, target);
+            }
+        }
+
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var leader = obj.offsetLeft;
+                var step = (target - leader) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                leader = leader + step;
+                obj.style.left = leader + "px";
+            }, 15)
+        }
+    </script>
+</body>
+
+</html>

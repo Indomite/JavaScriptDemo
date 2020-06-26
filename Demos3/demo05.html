@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画体验之盒子移动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">盒子</button>
+    <div id="demo">
+
+    </div>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var demo = document.getElementById("demo");
+        btn.onclick = function () {
+            clearInterval(timer); //防止重复设置定时器
+            timer = setInterval(function () {
+                var leader = demo.offsetLeft;
+                var step = 10;
+                if (leader < 400)
+                    leader = leader + step;
+                else
+                    clearInterval(timer);
+                demo.style.left = leader + "px";
+                console.log("zhixing mew ")
+            }, 15)
+
+        }
+    </script>
+</body>
+
+</html>

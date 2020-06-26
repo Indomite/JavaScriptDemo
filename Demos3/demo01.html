@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OffsetHeigt</title>
+    <style>
+        #demo {
+            width: 100px;
+            /* height: 100px; */
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo" style="height: 100px;">
+
+    </div>
+
+    <script>
+        var demo = document.getElementById("demo");
+        //style.height只能获取行内的高度
+        console.log(demo.style.height); //获取的是字符串类型，是有单位的
+        console.log(demo.offsetHeight); //获取的是数值。是一个只读属性
+    </script>
+</body>
+
+</html>

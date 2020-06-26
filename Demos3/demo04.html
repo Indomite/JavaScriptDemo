@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offsetleft</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #father {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        #son {
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            border: 10px solid #111;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="father">
+        <div id="son"></div>
+    </div>
+
+    <script>
+        var son = document.getElementById("son");
+        console.log(son.offsetLeft);
+        //从自身border的左侧转换到fu'ji
+    </script>
+</body>
+
+</html>
