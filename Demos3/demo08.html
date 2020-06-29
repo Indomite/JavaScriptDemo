@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小弹窗回收</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #box {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        #headpart {
+            position: relative;
+            width: 400px;
+            height: 100px;
+            background: red;
+        }
+
+        #bodypart {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <button id="close">关闭</button>
+        <div id="headpart"></div>
+
+        <div id="bodypart"></div>
+    </div>
+
+    <script>
+        var headpart = document.getElementById("headpart");
+        var bodypart = document.getElementById("bodypart");
+        var close = document.getElementById("close");
+        close.onclick = function () {
+            animate(bodypart, {
+                "height": 0
+            });
+            animate(headpart, {
+                "width": 0
+            });
+        }
+
+        function animate(obj, json) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var flag = true;
+                for (var k in json) {
+                    var leader = parseInt(getStyle(obj, k));
+                    var target = json[k];
+                    var step = (target - leader) / 10;
+                    //这么判断的话，就是在边界出来的时候会有撑开的情况，所以页面会跳动
+                    // step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    obj.style[k] = leader + "px";
+                    if (leader !== target) {
+                        flag = false;
+                    }
+                }
+                if (flag) {
+                    clearInterval(obj.timer);
+                }
+            }, 15)
+        }
+
+        function getStyle(obj, attr) {
+            if (window.getComputedStyle) {
+                // console.log(window.getComputedStyle(obj, null)[attr]);
+                return window.getComputedStyle(obj, null)[attr];
+            } else {
+                return obj.currentStyle[attr];
+            }
+        }
+    </script>
+</body>
+
+</html>

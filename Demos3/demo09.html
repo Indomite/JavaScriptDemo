@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        document.onmousemove = function getMousepos(event) {
+            var event = event || window.event;
+            var x = event.clientX;
+            var y = event.clientY;
+            var box = document.getElementById("box");
+            box.style.left = x - 25 + "px";
+            box.style.top = y - 25 + "px";
+        }
+    </script>
+</body>
+
+</html>

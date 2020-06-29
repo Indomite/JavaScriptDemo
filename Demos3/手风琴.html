@@ -95,6 +95,7 @@
 
         function getStyle(obj, attr) {
             if (window.getComputedStyle) {
+                console.log(window.getComputedStyle(obj, null)[attr]);
                 return window.getComputedStyle(obj, null)[attr];
             } else {
                 return obj.currentStyle[attr];
